@@ -48,6 +48,21 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.8', '>= 4.8.1'
+
+# A generalized Rack framework for multiple-provider authentication.
+gem 'omniauth', '~> 2.1'
+
+# Google OAuth2 strategy for OmniAuth 1.x.
+gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
+
+# implementing a CSRF token verifier that directly utilize RequestForgeryProtection
+gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
+
+# Autoload dotenv in Rails.
+gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
