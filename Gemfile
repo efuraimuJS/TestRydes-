@@ -63,6 +63,9 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.1'
 # Autoload dotenv in Rails.
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 
+# A Ruby wrapper for Gravatar URLs
+gem 'gravtastic', '~> 3.2', '>= 3.2.6'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

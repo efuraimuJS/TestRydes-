@@ -1,7 +1,10 @@
 class User < ApplicationRecord
+  include Gravtastic
+  gravtastic
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :omniauthable, :database_authenticatable, :registerable,
+  devise :confirmable, :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
 
   def self.from_omniauth(auth)
