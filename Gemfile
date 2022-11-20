@@ -66,6 +66,14 @@ gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 # A Ruby wrapper for Gravatar URLs
 gem 'gravtastic', '~> 3.2', '>= 3.2.6'
 
+# Very simple Roles library without any authorization enforcement
+gem 'rolify', '~> 6.0'
+
+gem "letter_opener", group: :development
+
+# Object oriented authorization for Rails applications
+gem 'pundit', '~> 1.1', require: true
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
