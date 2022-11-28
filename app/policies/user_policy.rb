@@ -6,6 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def home?
-    @user.has_any_role? :freeuser, :admin
+    # @user.has_any_role? :freeuser, :admin
+    true
   end
 end
