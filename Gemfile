@@ -74,6 +74,14 @@ gem "letter_opener", group: :development
 # Object oriented authorization for Rails applications
 gem 'pundit', '~> 1.1', require: true
 
+# To use sass with sprockets
+gem 'sass-rails'
+
+
+# Active Admin is a framework for creating administration style interfaces
+gem 'activeadmin'
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
