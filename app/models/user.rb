@@ -26,4 +26,8 @@ class User < ApplicationRecord
     self.add_role(:freeuser) if self.roles.blank?
   end
 
+  accepts_nested_attributes_for :roles, allow_destroy: true
+
+
+
 end
