@@ -19,7 +19,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :full_name
-    column :roles do |user|
+    column :roles do |user| # user is every single instance of the User.rb Model.
       # table_for user.roles.order('name ASC') do
       #   column do |role|
       #     role.name
