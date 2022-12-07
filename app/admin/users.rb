@@ -30,11 +30,16 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    f.semantic_errors # shows errors on :base
-    # f.inputs          # builds an input field for every attribute
-    f.actions         # adds the 'Submit' and 'Cancel' buttons
-    collected_data = Role.all
-    f.input :roles, :as => :check_boxes, collection: collected_data
+    f.inputs do # builds an input field for every attribute
+      f.semantic_errors # shows errors on :base
+
+      f.actions # adds the 'Submit' and 'Cancel' buttons
+      collected_data = Role.all
+      f.input :roles, :as => :check_boxes, collection: collected_data
+      f.inputs
+    end
+
+
   end
 
   show do
