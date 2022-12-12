@@ -77,6 +77,10 @@ gem 'pundit', '~> 1.1', require: true
 # To use sass with sprockets
 gem 'sass-rails'
 
+# Sprockets for Sass compilation
+gem 'sassc-rails'
+
+
 
 # Active Admin is a framework for creating administration style interfaces
 gem 'activeadmin'

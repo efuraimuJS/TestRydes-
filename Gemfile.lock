@@ -343,6 +343,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   rolify (~> 6.0)
   sass-rails
+  sassc-rails
   selenium-webdriver
   sprockets-rails
   stimulus-rails
