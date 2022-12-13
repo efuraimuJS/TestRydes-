@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- PAGE TITLE -->
   <title>TestRydes</title>
+
+  <!-- META-DATA -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="assets/images/favicon.png">
+
+  <!-- CSS:: FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- CSS:: ANIMATE -->
+  <link rel="stylesheet" type="text/css" href="assets/css/plugins/animate/animate.css">
+
+  <!-- CSS:: MAIN -->
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+  <link rel="stylesheet" type="text/css" id="r-color-roller" href="assets/color-files/color-08.css">
+
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
 </head>
@@ -12,11 +33,42 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<%= yield %>
+<div class="r-wrapper">
+  <%=render "layouts/header" %>
+  <%= yield %>
+  <%=render "layouts/footer" %>
+</div>
+<div id="r-to-top" class="r-to-top"><i class="fa fa-angle-up"></i></div>
 <br>
 <pre><%= debug(params) if Rails.env.development? %></pre>
 <br>
 
+
+<!-- JQUERY:: JQUERY.JS -->
+<script src="assets/js/jquery.min.js"></script>
+
+<!-- JQUERY:: APPEAR.JS -->
+<script src="assets/js/plugins/appear/appear.js"></script>
+
+<!-- JQUERY:: COUNTER.JS -->
+<script src="assets/js/plugins/counter/jquery.easing.min.js"></script>
+<script src="assets/js/plugins/counter/counter.min.js"></script>
+
+<!-- JQUERY:: BOOTSTRAP.JS -->
+<script src="assets/js/tether.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- JQUERY:: PLUGINS -->
+<script src="assets/js/plugins/owl/owl.carousel.min.js"></script>
+<script src="assets/js/plugins/lightcase/lightcase.js"></script>
+
+
+<!-- JQUERY:: MAP -->
+<script src="assets/js/map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-EDTJ5_uU3zBIX7-wNTu-qSZr1DO5Dw"></script>
+
+<!-- JQUERY:: CUSTOM.JS -->
+<script src="assets/js/custom.js"></script>
 <%= javascript_importmap_tags %>
 </body>
 </html>
