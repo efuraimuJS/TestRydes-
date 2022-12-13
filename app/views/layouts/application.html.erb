@@ -32,8 +32,11 @@
 <body>
 
 <div class="r-wrapper">
-  <p class="notice alert-dark" role="alert"><%= notice %></p>
-  <p class="alert alert-success" role="alert"><%= alert %></p>
+  <div class="messenger-container">
+    <p class="notice alert-dark" role="alert"><%= notice %></p>
+    <p class="alert alert-success" role="alert"><%= alert %></p>
+  </div>
+
   <%= render "layouts/header" %>
   <%= yield %>
   <%= render "layouts/footer" %>
