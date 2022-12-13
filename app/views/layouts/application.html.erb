@@ -29,14 +29,14 @@
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
 </head>
-
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
 <div class="r-wrapper">
-  <%=render "layouts/header" %>
+  <p class="notice alert-dark" role="alert"><%= notice %></p>
+  <p class="alert alert-success" role="alert"><%= alert %></p>
+  <%= render "layouts/header" %>
   <%= yield %>
-  <%=render "layouts/footer" %>
+  <%= render "layouts/footer" %>
 </div>
 <div id="r-to-top" class="r-to-top"><i class="fa fa-angle-up"></i></div>
 <br>
