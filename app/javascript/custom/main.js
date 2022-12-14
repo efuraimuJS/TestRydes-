@@ -1,4 +1,4 @@
 console.log('helloworld!')
 
-$("div.messenger-container").fadeOut("slow")
-    .then($("div.messenger-container").remove());
+$("div.messenger-container").fadeOut(5000)
+    // .then($("div.messenger-container").remove());

@@ -33,8 +33,11 @@
 
 <div class="r-wrapper">
   <div class="messenger-container">
-    <p class="notice alert-dark" role="alert"><%= notice %></p>
-    <p class="alert alert-success" role="alert"><%= alert %></p>
+    <% if notice || alert %>
+      <p class="notice alert-dark" role="alert"><%= notice %></p>
+      <p class="alert alert-success" role="alert"><%= alert %></p>
+    <% end %>
+
   </div>
 
   <%= render "layouts/header" %>
