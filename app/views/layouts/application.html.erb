@@ -14,23 +14,23 @@
   <meta name="keywords" content="">
 
   <!-- FAVICON -->
-  <link rel="shortcut icon" href="assets/images/favicon.png">
+  <%= favicon_link_tag '/assets/images/favicon.png' %>
 
   <!-- CSS:: FONTS -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700' %>
 
   <!-- CSS:: ANIMATE -->
-  <link rel="stylesheet" type="text/css" href="assets/css/plugins/animate/animate.css">
+  <%= stylesheet_link_tag "/assets/css/plugins/animate/animate.css" %>
 
   <!-- CSS:: MAIN -->
-  <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-  <link rel="stylesheet" type="text/css" id="r-color-roller" href="assets/color-files/color-08.css">
+  <%= stylesheet_link_tag '/assets/css/main.css' %>
+  <%= stylesheet_link_tag '/assets/color-files/color-08.css', id: "r-color-roller" %>
 
+  <!-- CSS:: APP CUSTOM -->
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
 </head>
 <body>
-
 <div class="r-wrapper">
   <div class="messenger-container">
     <% if notice || alert %>
@@ -51,30 +51,30 @@
 
 
 <!-- JQUERY:: JQUERY.JS -->
-<script src="assets/js/jquery.min.js"></script>
+<%= javascript_include_tag "/assets/js/jquery.min.js" %>
 
 <!-- JQUERY:: APPEAR.JS -->
-<script src="assets/js/plugins/appear/appear.js"></script>
+<%= javascript_include_tag "/assets/js/plugins/appear/appear.js" %>
 
 <!-- JQUERY:: COUNTER.JS -->
-<script src="assets/js/plugins/counter/jquery.easing.min.js"></script>
-<script src="assets/js/plugins/counter/counter.min.js"></script>
+<%= javascript_include_tag "/assets/js/plugins/counter/jquery.easing.min.js"%>
+<%= javascript_include_tag "/assets/js/plugins/counter/counter.min.js"%>
 
 <!-- JQUERY:: BOOTSTRAP.JS -->
-<script src="assets/js/tether.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<%= javascript_include_tag "/assets/js/tether.min.js"%>
+<%= javascript_include_tag "/assets/js/bootstrap.min.js"%>
 
 <!-- JQUERY:: PLUGINS -->
-<script src="assets/js/plugins/owl/owl.carousel.min.js"></script>
-<script src="assets/js/plugins/lightcase/lightcase.js"></script>
-
+<%= javascript_include_tag "/assets/js/plugins/owl/owl.carousel.min.js"%>
+<%= javascript_include_tag "/assets/js/plugins/lightcase/lightcase.js"%>
 
 <!-- JQUERY:: MAP -->
-<script src="assets/js/map.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-EDTJ5_uU3zBIX7-wNTu-qSZr1DO5Dw"></script>
+<%= javascript_include_tag "/assets/js/map.js"%>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-EDTJ5_uU3zBIX7-wNTu-qSZr1DO5Dw"%>
 
 <!-- JQUERY:: CUSTOM.JS -->
-<script src="assets/js/custom.js"></script>
+<%= javascript_include_tag "/assets/js/custom.js"%>
+
 <%= javascript_importmap_tags %>
 </body>
 </html>
