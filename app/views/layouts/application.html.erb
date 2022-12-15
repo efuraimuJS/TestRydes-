@@ -39,8 +39,11 @@
     <% end %>
 
   </div>
-
-  <%= render "layouts/header" %>
+  <% if current_page?(root_path) %>
+    <%= render "layouts/header" %>
+  <% else %>
+    <%= render "layouts/simple-header" %>
+  <% end %>
   <%= yield %>
   <%= render "layouts/footer" %>
 </div>
@@ -57,23 +60,23 @@
 <%= javascript_include_tag "/assets/js/plugins/appear/appear.js" %>
 
 <!-- JQUERY:: COUNTER.JS -->
-<%= javascript_include_tag "/assets/js/plugins/counter/jquery.easing.min.js"%>
-<%= javascript_include_tag "/assets/js/plugins/counter/counter.min.js"%>
+<%= javascript_include_tag "/assets/js/plugins/counter/jquery.easing.min.js" %>
+<%= javascript_include_tag "/assets/js/plugins/counter/counter.min.js" %>
 
 <!-- JQUERY:: BOOTSTRAP.JS -->
-<%= javascript_include_tag "/assets/js/tether.min.js"%>
-<%= javascript_include_tag "/assets/js/bootstrap.min.js"%>
+<%= javascript_include_tag "/assets/js/tether.min.js" %>
+<%= javascript_include_tag "/assets/js/bootstrap.min.js" %>
 
 <!-- JQUERY:: PLUGINS -->
-<%= javascript_include_tag "/assets/js/plugins/owl/owl.carousel.min.js"%>
-<%= javascript_include_tag "/assets/js/plugins/lightcase/lightcase.js"%>
+<%= javascript_include_tag "/assets/js/plugins/owl/owl.carousel.min.js" %>
+<%= javascript_include_tag "/assets/js/plugins/lightcase/lightcase.js" %>
 
 <!-- JQUERY:: MAP -->
-<%= javascript_include_tag "/assets/js/map.js"%>
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-EDTJ5_uU3zBIX7-wNTu-qSZr1DO5Dw"%>
+<%= javascript_include_tag "/assets/js/map.js" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-EDTJ5_uU3zBIX7-wNTu-qSZr1DO5Dw" %>
 
 <!-- JQUERY:: CUSTOM.JS -->
-<%= javascript_include_tag "/assets/js/custom.js"%>
+<%= javascript_include_tag "/assets/js/custom.js" %>
 
 <%= javascript_importmap_tags %>
 </body>
