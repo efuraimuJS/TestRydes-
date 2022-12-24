@@ -13,9 +13,14 @@
           </div>
           <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <div class="r-header-action float-left">
-              <a href="login-register.html"> <img src="assets/images/icon-lock.png" alt=''/> <span>Login</span></a>
-              <a href="#" class="r-search"> <img src="assets/images/icon-search.png" alt=''/> <span>Search</span></a>
-
+              <%= link_to new_user_registration_path do %>
+                <%= image_tag '/assets/images/icon-search.png', alt: "Login" %>
+                <%= tag.span 'Login' %>
+              <% end %>
+              <%= link_to '#' do %>
+                <%= image_tag '/assets/images/icon-search.png', alt: "Search" %>
+                <%= tag.span 'Search' %>
+              <% end %>
               <div class="r-search-wrapper">
                 <div class="r-search-inner">
                   <form>

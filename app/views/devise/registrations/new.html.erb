@@ -1,29 +1,92 @@
-<h2>Sign up</h2>
+<section id="r-login-register">
+  <div class="r-login-register">
+    <div class="r-login-register-in">
+      <div class="r-auth-or">
+        <span>OR</span>
+      </div>
+      <div class="clearfix">
+        <div class="r-auth-outer r-login">
+          <div class="r-auth-head">
+            <h2><b>Login</b> Now</h2>
+            <span>Login to our website</span>
+          </div>
+          <div class="r-auth-form">
+            <div class="r-login-fb">
+              <%- if devise_mapping.omniauthable? %>
+                <%- resource_class.omniauth_providers.each do |provider| %>
+                  <%= form_for "Login", url: omniauth_authorize_path(resource_name, provider), method: :post, data: {turbo: "false"} do |f|%>
+                  <%= f.submit "Sign in with #{OmniAuth::Utils.camelize(provider)}", type: "image", src: url_for(asset_path('/assets/images/sign_in_google_btn.svg'))%>
+                  <% end %>
+                <% end %>
+              <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+            </div>
+            <div class="r-or-line"><span>OR SIGN IN</span></div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: {turbo: false}) do |f| %>
+              <div class="form-group">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email", :required => true %>
+              </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <div class="form-group">
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password", :required => true %>
+              </div>
+
+              <% if devise_mapping.rememberable? %>
+                <div class="form-group" style="display: flex; align-items: center;">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me, style: 'margin-bottom: 0px;  padding-left: 1em' %>
+                </div>
+              <% end %>
+
+              <div class="form-group">
+                <%= f.submit "Login Now", class: "btn btn-full" %>
+              </div>
+            <% end %>
+
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+              <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+            <% end %>
+            <%= render "devise/shared/links" %>
+
+<!--                        <div class="r-from-inof">-->
+<!--              <p class="text-center">-->
+<!--                * Denotes mandatory field. <br>-->
+<!--                ** At least one telephone number is required.-->
+<!--              </p>-->
+<!--            </div>-->
+          </div>
+        </div>
+        <div class="r-auth-outer r-register">
+          <div class="r-auth-head">
+            <h2><b>Register</b> Now</h2>
+            <span>Required information for account creation</span>
+          </div>
+          <div class="r-auth-form">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+
+              <div class="form-group">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email Address", :required => true  %>
+              </div>
+
+              <div class="form-group">
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password", :required => true  %>
+              </div>
+
+              <div class="form-group">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm Password", :required => true  %>
+              </div>
+
+              <div class="form-group">
+                <%= f.submit "Sign Up Now", class: "btn btn-full" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

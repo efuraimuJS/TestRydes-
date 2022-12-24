@@ -32,13 +32,13 @@
 </head>
 <body>
 <div class="r-wrapper">
-  <div class="messenger-container">
-    <% if notice || alert %>
-      <p class="notice alert-dark" role="alert"><%= notice %></p>
-      <p class="alert alert-success" role="alert"><%= alert %></p>
-    <% end %>
+  <% if notice || alert %>
+    <div id="msg-notifier" style=" display: inline-block; width: 100%; height: 50px;">
+      <%= tag.p notice, class: "notice alert-info alert-dismissible fade show", role: "alert", style: "margin-bottom: 0px; height: 100%" if notice.present? %>
+      <%= tag.p alert, class: "alert alert-warning alert-dismissible fade show", role: "alert", style: "margin-bottom: 0px; height: 100%" if alert.present? %>
+    </div>
+  <%end %>
 
-  </div>
   <% if current_page?(root_path) %>
     <%= render "layouts/header" %>
   <% else %>
@@ -47,7 +47,9 @@
   <%= yield %>
   <%= render "layouts/footer" %>
 </div>
-<div id="r-to-top" class="r-to-top"><i class="fa fa-angle-up"></i></div>
+<div id="r-to-top" class="r-to-top">
+  <i class="fa fa-angle-up"></i>
+</div>
 <br>
 <pre><%= debug(params) if Rails.env.development? %></pre>
 <br>

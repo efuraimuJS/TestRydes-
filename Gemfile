@@ -108,3 +108,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+group :development do
+  gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
+  gem "chusaku", require: false
+end
