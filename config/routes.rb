@@ -4,7 +4,9 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   root 'pages#home'
+  get '/instructors', to: 'pages#instructors'
   devise_for :users, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks',
       sessions: 'users/sessions',

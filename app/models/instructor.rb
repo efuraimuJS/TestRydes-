@@ -19,7 +19,7 @@
 #  unconfirmed_email      :string
 #  username               :string
 #  created_at             :datetime         not null
-#  updated_at             :datetime         not null
+#  updated_at          p   :datetime         not null
 #
 # Indexes
 #
@@ -28,10 +28,6 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_type                  (type)
 #
-require "test_helper"
+class Instructor < User
 
-class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
 end

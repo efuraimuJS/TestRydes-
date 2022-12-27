@@ -3,4 +3,8 @@ class PagesController < ApplicationController
   def home
     authorize User
   end
+
+  def instructors
+    @instructors = User.instructors
+  end
 end

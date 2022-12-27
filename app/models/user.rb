@@ -14,6 +14,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  type                   :string
 #  uid                    :string
 #  unconfirmed_email      :string
 #  username               :string
@@ -25,16 +26,30 @@
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_type                  (type)
 #
 class User < ApplicationRecord
+  self.inheritance_column = :type
+
   rolify
   include Gravtastic
   gravtastic
+
+  has_many :trips, -> {where(type: 'Rider')}, foreign_key: :rider_id
+  has_many :instructors, through: :trips
+
+  has_many :trips, -> {where(type: 'Instructor')}, foreign_key: :instructor_id
+  has_many :riders, through: :trips
+
+  scope :instructors, -> {where(type: 'Instructor')}
+  scope :riders, -> {where(type: 'Rider')}
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :confirmable, :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -51,11 +66,9 @@ class User < ApplicationRecord
   after_create :assign_default_role
 
   def assign_default_role
-    self.add_role(:freeuser) if self.roles.blank?
+    self.add_role(:rider) if self.roles.blank?
   end
 
   accepts_nested_attributes_for :roles, allow_destroy: true
-
-
 
 end
