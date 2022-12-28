@@ -80,6 +80,9 @@ gem 'sass-rails'
 # Sprockets for Sass compilation
 gem 'sassc-rails'
 
+# Allow you to pluck deeply into nested associations
+# without loading a bunch of records
+gem 'deep_pluck'
 
 
 # Active Admin is a framework for creating administration style interfaces

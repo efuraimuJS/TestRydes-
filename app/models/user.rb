@@ -35,15 +35,16 @@ class User < ApplicationRecord
   include Gravtastic
   gravtastic
 
-  has_many :trips, -> {where(type: 'Rider')}, foreign_key: :rider_id
+  has_many :trips, foreign_key: :rider_id
   has_many :instructors, through: :trips
 
-  has_many :trips, -> {where(type: 'Instructor')}, foreign_key: :instructor_id
+  has_many :trips, foreign_key: :instructor_id
   has_many :riders, through: :trips
 
   scope :instructors, -> {where(type: 'Instructor')}
   scope :riders, -> {where(type: 'Rider')}
 
+  accepts_nested_attributes_for :trips, allow_destroy: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
