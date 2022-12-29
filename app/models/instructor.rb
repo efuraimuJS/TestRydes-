@@ -29,5 +29,6 @@
 #  index_users_on_type                  (type)
 #
 class Instructor < User
-
+  has_many :trips, foreign_key: :instructor_id
+  has_many :instructors, through: :trips
 end
