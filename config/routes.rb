@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get '/instructors', to: 'pages#instructors'
+
+  get '/users/sign_in', to: redirect('/users/sign_up')
+
   devise_for :users, controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks',
       sessions: 'users/sessions',

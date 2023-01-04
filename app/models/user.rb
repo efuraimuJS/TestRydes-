@@ -34,10 +34,16 @@ class User < ApplicationRecord
   rolify
   include Gravtastic
   gravtastic
-  #
+
+
+  has_one_attached :avatar_url
+
+  validates :avatar_url, content_type: [:png, :jpg, :jpeg]
 
   has_many :trips, foreign_key: :rider_id
   has_many :riders, through: :trips
+
+  has_many :vehicles, foreign_key: :instructor_id, inverse_of: :user
 
   scope :instructors, -> {where(type: 'Instructor')}
   scope :riders, -> {where(type: 'Rider')}
@@ -48,6 +54,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :confirmable, :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, omniauth_providers: [:google_oauth2]
+
+  # validates :username, length: {minimum: 3, maximum: 10}, allow_blank: false
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

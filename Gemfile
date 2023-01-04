@@ -116,3 +116,9 @@ group :development do
   gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
   gem "chusaku", require: false
 end
+
+# Provides higher-level image processing helpers
+gem "image_processing", "~> 1.0"
+
+# Validations for Active Storage (presence)
+gem 'active_storage_validations', '~> 0.1'

@@ -28,21 +28,20 @@ console.log(signin_img_mediaQuery.media)
 //     }
 // })
 
-
 function mediaSize() {
     if (window.matchMedia('(min-width: 480px) and (max-width: 1400px)').matches) {
         $("form > input[type=image]:nth-child(2)")
             .addClass("img-fluid d-block m-auto sized-login-img")
             .attr({width: '360'}).css('cssText', 'height: 86.7015705px !important; padding: 0 !important;')
 
-        $("#new_user > div:nth-child(5) > input, #new_user > div:nth-child(6) > input").css('cssText', 'padding: 0 !important; color: #fff; border: 1px solid transparent !important; height: 62px; border: 1px solid transparent;')
+        $("#new_user > div:nth-child(6) > input, #new_user > div:nth-child(5) > input.btn.btn-full").css('cssText', 'padding: 0 !important; color: #fff; border: 1px solid transparent !important; height: 62px; border: 1px solid transparent;')
 
     } else if (window.matchMedia('(max-width: 479px)').matches) {
         $("form > input[type=image]:nth-child(2)")
             .addClass("img-fluid d-block m-auto sized-login-img")
             .attr({width: '360'}).css('cssText', 'height: 77.0680628px !important; padding: 0 !important;')
 
-        $("#new_user > div:nth-child(5) > input, #new_user > div:nth-child(6) > input").css('cssText', 'padding: 0 !important; color: #fff; border: 1px solid transparent !important; height: 42px; border: 1px solid transparent;')
+        $("#new_user > div:nth-child(6) > input, #new_user > div:nth-child(5) > input.btn.btn-full").css('cssText', 'padding: 0 !important; color: #fff; border: 1px solid transparent !important; height: 42px; border: 1px solid transparent;')
 
     }
 }

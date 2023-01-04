@@ -19,7 +19,7 @@
 #  unconfirmed_email      :string
 #  username               :string
 #  created_at             :datetime         not null
-#  updated_at          p   :datetime         not null
+#  updated_at             :datetime         not null
 #
 # Indexes
 #
