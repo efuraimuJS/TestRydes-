@@ -27,8 +27,6 @@
 
               <%= link_to edit_user_registration_path	 do %>
                 <% if current_user %>
-                  <%#= !current_user.avatar_url.nil? ? image_tag current_user.avatar_url, :size => '28*29' : image_tag '/assets/images/icon-search.png', :size => '28*29' %>
-
                   <%= image_tag current_user.avatar_url.variant(resize_to_limit: [28, 29]), style: 'border-radius: 50%;' %>
                   <%= tag.span "#{current_user.username}".truncate(8) %>
                 <%else %>

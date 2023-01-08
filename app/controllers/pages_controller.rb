@@ -4,6 +4,7 @@ class PagesController < ApplicationController
     authorize User
   end
 
+  # @route GET /instructors (instructors)
   def instructors
     @instructors = User.instructors
   end

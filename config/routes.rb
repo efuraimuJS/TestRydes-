@@ -2,8 +2,22 @@
 #
 
 Rails.application.routes.draw do
+  get 'trips/new'
+  get 'trips/create'
+  get 'trips/update'
+  get 'trips/edit'
+  get 'trips/destroy'
+  get 'trips/show'
+  get 'trips/index'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  resources :users do
+    get :instructor_booking,
+        # on: :member,
+        to: 'trips#new', constraints: InstructorBookingConstraint.new
+  end
 
   root 'pages#home'
   get '/instructors', to: 'pages#instructors'
