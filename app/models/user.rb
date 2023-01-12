@@ -40,15 +40,19 @@ class User < ApplicationRecord
 
   validates :avatar_url, content_type: [:png, :jpg, :jpeg]
 
-  has_many :trips, foreign_key: :rider_id
-  has_many :riders, through: :trips
+  # has_many :trips, foreign_key: :rider_id
+  # has_many :riders, through: :trips
 
-  has_many :vehicles, foreign_key: :instructor_id, inverse_of: :user
+  has_many :rider_users, foreign_key: :rider_id, class_name: 'Trip'
+  has_many :instructors, through: :rider_users
+
+  has_many :instructor_users, foreign_key: :instructor_id, class_name: 'Trip'
+  has_many :riders, through: :instructor_users
 
   scope :instructors, -> {where(type: 'Instructor')}
   scope :riders, -> {where(type: 'Rider')}
 
-  accepts_nested_attributes_for :trips, allow_destroy: true
+  # accepts_nested_attributes_for :trips, allow_destroy: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

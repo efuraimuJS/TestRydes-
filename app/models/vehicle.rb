@@ -17,7 +17,8 @@
 #  fk_rails_...  (instructor_id => users.id)
 #
 class Vehicle < ApplicationRecord
-  belongs_to :instructor, -> {where(type: 'Instructor')}, class_name: 'User', :inverse_of => :vehicles
+  belongs_to :instructor, -> {where(type: 'Instructor')}, class_name: 'User'
+  # , :inverse_of => :vehicles
 
   validates_presence_of :instructor
 end

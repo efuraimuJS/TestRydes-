@@ -30,5 +30,6 @@
 #
 class Instructor < User
   has_many :trips, foreign_key: :instructor_id
-  has_many :instructors, through: :trips
+  has_many :vehicles, foreign_key: :instructor_id
+  # , inverse_of: :user
 end

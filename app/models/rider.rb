@@ -29,6 +29,6 @@
 #  index_users_on_type                  (type)
 #
 class Rider < User
-  # has_many :trips, foreign_key: :rider_id
-  # has_many :riders, through: :trips
+  has_many :trips, foreign_key: :rider_id
+
 end

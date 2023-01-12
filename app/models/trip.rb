@@ -19,8 +19,10 @@
 #  fk_rails_...  (rider_id => users.id)
 #
 class Trip < ApplicationRecord
-  belongs_to :rider, -> {where(type: 'Rider')}, class_name: 'User', :inverse_of => :trips
-  belongs_to :instructor, -> {where(type: 'Instructor')}, class_name: 'User', :inverse_of => :trips
+  belongs_to :rider, -> {where(type: 'Rider')}, class_name: 'User'
+  # , :inverse_of => :trips
+  belongs_to :instructor, -> {where(type: 'Instructor')}, class_name: 'User'
+  # , :inverse_of => :trips
 
   validates_presence_of :instructor
   validates_presence_of :rider
