@@ -129,6 +129,26 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    elasticsearch (7.4.0)
+      elasticsearch-api (= 7.4.0)
+      elasticsearch-transport (= 7.4.0)
+    elasticsearch-api (7.4.0)
+      multi_json
+    elasticsearch-dsl (0.1.10)
+    elasticsearch-model (7.2.1)
+      activesupport (> 3)
+      elasticsearch (~> 7)
+      hashie
+    elasticsearch-persistence (7.2.1)
+      activemodel (> 4)
+      activesupport (> 4)
+      elasticsearch (~> 7)
+      elasticsearch-model (= 7.2.1)
+      hashie
+    elasticsearch-rails (7.2.1)
+    elasticsearch-transport (7.4.0)
+      faraday
+      multi_json
     erubi (1.11.0)
     faraday (2.7.1)
       faraday-net_http (>= 2.0, < 3.1)
@@ -198,6 +218,7 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.16.3)
     msgpack (1.6.0)
+    multi_json (1.15.0)
     multi_xml (0.6.0)
     net-imap (0.3.1)
       net-protocol
@@ -364,6 +385,10 @@ DEPENDENCIES
   deep_pluck
   devise (~> 4.8, >= 4.8.1)
   dotenv-rails (~> 2.8, >= 2.8.1)
+  elasticsearch-dsl (~> 0.1.10)
+  elasticsearch-model (~> 7.2, >= 7.2.1)
+  elasticsearch-persistence (~> 7.2, >= 7.2.1)
+  elasticsearch-rails (~> 7.2, >= 7.2.1)
   gravtastic (~> 3.2, >= 3.2.6)
   image_processing (~> 1.0)
   importmap-rails

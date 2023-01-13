@@ -3,52 +3,44 @@
     <div class="col-xl-7 col-lg-6 col-md-6 col-sm-12 col-xs-12 r-list-area">
       <div class="r-car-search r-carlist-search">
         <div class="container">
-          <form>
+          <%= form_with url: find_instructors_path, method: :post do |form| %>
+
             <div class="row">
               <div class="r-search-full col-md-12">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search car by name or location">
-                  <button class="fa fa-search"></button>
+                  <%= form.search_field :query, oninput: 'this.form.requestSubmit()', class: "form-control", placeholder: "Search car by name or location" %>
+                  <%= form.button class: "fa fa-search"%>
                 </div>
               </div>
+
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="form-group">
-                  <label> Car Brand </label>
-                  <select class="form-control">
-                    <option>Any Brands</option>
-                    <option>Any Brands</option>
-                    <option>Any Brands</option>
-                    <option>Any Brands</option>
-                  </select>
+                  <%= form.label 'Car Brand' %>
+                  <%= form.select :car_brand, ["Toyota", "BMW", " Mazda", ], {},{class: "form-control"} %>
                 </div>
               </div>
+
               <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="form-group">
-                  <label> Car Type </label>
-                  <select class="form-control">
-                    <option>Any Type</option>
-                    <option>Any Type</option>
-                    <option>Any Type</option>
-                    <option>Any Type</option>
-                  </select>
+                  <%= form.label 'Car Type' %>
+                  <%= form.select :car_type, ["Toyota", "BMW", " Mazda", ], {},{class: "form-control"}%>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
                 <div class="form-group">
-                  <label> Car Price </label>
-                  <select class="form-control">
-                    <option>Price Low to High</option>
-                    <option>Price High to Low</option>
-                  </select>
+                  <%= form.label 'Car Price' %>
+                  <%= form.select :car_price, ["Price Low to High", "Price High to Low"], {},{class: "form-control"} %>
                 </div>
               </div>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group mb-0">
-                  <input type="submit" class="form-control btn-primary" value="Search Car Now">
+                  <%= form.submit class: "form-control btn-primary", value:"Search Car Now"  %>
                 </div>
               </div>
             </div>
-          </form>
+        <% end %>
+
         </div>
       </div>
       <div class="clearfix r-sort-val">
@@ -63,7 +55,7 @@
         <div class="pull-right"><span class="r-total-result">6 Search results</span></div>
       </div>
       <div class="r-best-offer-list r-car-list-map mCustomScrollbar">
-        <div class="row clearfix">
+        <div class="row clearfix" id="instr_search_results">
           <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="r-best-offer-single">
               <div class="r-best-offer-in">

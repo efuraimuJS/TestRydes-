@@ -122,3 +122,11 @@ gem "image_processing", "~> 1.0"
 
 # Validations for Active Storage (presence)
 gem 'active_storage_validations', '~> 0.1'
+
+# contains search integration for Ruby/Rails models
+gem 'elasticsearch-model', '~> 7.2', '>= 7.2.1'
+gem 'elasticsearch-rails', '~> 7.2', '>= 7.2.1'
+gem 'elasticsearch-persistence', '~> 7.2', '>= 7.2.1'
+
+# The elasticsearch-dsl library provides a Ruby API for the Elasticsearch Query DSL.
+gem 'elasticsearch-dsl', '~> 0.1.10'

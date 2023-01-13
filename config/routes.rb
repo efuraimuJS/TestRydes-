@@ -15,6 +15,9 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get '/find_instructors', to: 'pages#instructors'
+  post :find_instructors, to: 'pages#instructor_search'
+  # , on: :collection
+
   get '/users/sign_in', to: redirect('/users/sign_up')
 
   devise_for :users, controllers: {

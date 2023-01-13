@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   # @route GET /trips/new (trips_new)
-  # @route GET /users/:id/instructor_booking (instructor_booking_user)
+  # @route GET /users/:user_id/instructor_booking (user_instructor_booking)
   def new
   end
 
