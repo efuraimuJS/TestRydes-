@@ -7,7 +7,7 @@ module Searchable
     index_name [Rails.env, Rails.application.class.module_parent_name.underscore, self.name.downcase].join('_')
     #
     settings index: { number_of_shards: 1 } do
-      mapping do
+      mapping dynamic: 'false' do
         indexes :id, type: :integer
         indexes :account_type, type: :text
         indexes :email, type: :text
@@ -21,6 +21,7 @@ module Searchable
       self.as_json( only: [ :id, :account_type, :email, :avatar_url, :full_name, :username ]
       # , methods: :method_name
                   )
+      # UserDenormalizer.new(self).to_hash
     end
 
 
