@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  account_type           :string
 #  avatar_url             :string
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
@@ -15,6 +14,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  type                   :string
 #  uid                    :string
 #  unconfirmed_email      :string
 #  username               :string
@@ -23,22 +23,22 @@
 #
 # Indexes
 #
-#  index_users_on_account_type          (account_type)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#
+#  index_users_on_type                  (type)
 #
 
 class User < ApplicationRecord
-  include Searchable
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  index_name [Rails.env, Rails.application.class.module_parent_name.underscore, self.name.downcase].join('_')
 
-  self.inheritance_column = :account_type
+  self.inheritance_column = :type
 
   rolify
   include Gravtastic
   gravtastic
-
 
   # has_one_attached :avatar_url
 
@@ -55,8 +55,6 @@ class User < ApplicationRecord
 
   scope :instructors, -> {where(type: 'Instructor')}
   scope :riders, -> {where(type: 'Rider')}
-
-  # accepts_nested_attributes_for :trips, allow_destroy: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

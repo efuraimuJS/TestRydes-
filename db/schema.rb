@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_13_203250) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_23_214517) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,11 +104,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_203250) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "username"
-    t.string "account_type"
-    t.index ["account_type"], name: "index_users_on_account_type"
+    t.string "type"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["type"], name: "index_users_on_type"
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
@@ -119,12 +119,32 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_203250) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  create_table "vehicle_brands", force: :cascade do |t|
+    t.string "brand_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "vehicle_models_id"
+    t.index ["vehicle_models_id"], name: "index_vehicle_brands_on_vehicle_models_id"
+  end
+
+  create_table "vehicle_models", force: :cascade do |t|
+    t.string "model_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "vehicles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "instructor_id"
-    t.string "brand"
+    t.bigint "vehicle_models_id"
+    t.bigint "vehicle_brands_id"
+    t.integer "vehicle_type"
+    t.integer "transmission_type"
+    t.integer "control_type"
     t.index ["instructor_id"], name: "index_vehicles_on_instructor_id"
+    t.index ["vehicle_brands_id"], name: "index_vehicles_on_vehicle_brands_id"
+    t.index ["vehicle_models_id"], name: "index_vehicles_on_vehicle_models_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

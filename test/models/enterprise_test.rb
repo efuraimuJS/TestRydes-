@@ -3,7 +3,6 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  account_type           :string
 #  avatar_url             :string
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
@@ -15,6 +14,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  type                   :string
 #  uid                    :string
 #  unconfirmed_email      :string
 #  username               :string
@@ -23,10 +23,10 @@
 #
 # Indexes
 #
-#  index_users_on_account_type          (account_type)
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_type                  (type)
 #
 require "test_helper"
 

@@ -1,0 +1,2 @@
+class AddingChangesToVehiclesTable < ApplicationRecord
+end

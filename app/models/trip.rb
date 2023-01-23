@@ -19,6 +19,10 @@
 #  fk_rails_...  (rider_id => users.id)
 #
 class Trip < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  index_name [Rails.env, Rails.application.class.module_parent_name.underscore, self.name.downcase].join('_')
+
   belongs_to :rider, -> {where(type: 'Rider')}, class_name: 'User'
   # , :inverse_of => :trips
   belongs_to :instructor, -> {where(type: 'Instructor')}, class_name: 'User'
