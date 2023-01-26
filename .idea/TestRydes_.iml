@@ -29,16 +29,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v2.4.0.dev, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="debug (v1.6.3, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="io-console (v0.5.11, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="matrix (v0.4.2, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="minitest (v5.16.3, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.3.1, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.3.3, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="racc (v1.6.0, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v13.0.6, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="reline (v0.3.1, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rexml (v3.2.5, Remote: ruby-3.2.0dev (T09:59:06Z maste) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">

@@ -6,16 +6,15 @@ class PagesController < ApplicationController
 
   # @route GET /find_instructors (find_instructors)
   def instructors
-    @instructors = User.instructors
+    @results = Instructor.filter_by_instructor_vehicle(params[:query])
   end
 
   # @route POST /find_instructors (find_instructors)
   def instructor_search
-    @results = Instructor.search("#{params[:query]}").response.hits.hits.map{|r| r._source}
     if params[:query].empty?
-      @results = Instructor.search("*").response.hits.hits.map{|r| r._source}
+      @results = Instructor.filter_by_instructor_vehicle("*")
     else
-      @results = Instructor.search("#{params[:query]}").response.hits.hits.map{|r| r._source}
+      @results = Instructor.filter_by_instructor_vehicle(params[:query])
     end
     respond_to do |format|
       format.turbo_stream do

@@ -3,18 +3,22 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  address                :text
 #  avatar_url             :string
+#  avatar_url_pic         :string
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
 #  confirmed_at           :datetime
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  full_name              :string
+#  latitude               :float
+#  longitude              :float
 #  provider               :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  type                   :string
+#  type                   :string           default("Rider")
 #  uid                    :string
 #  unconfirmed_email      :string
 #  username               :string
@@ -40,9 +44,9 @@ class User < ApplicationRecord
   include Gravtastic
   gravtastic
 
-  # has_one_attached :avatar_url
+  has_one_attached :avatar_url_pic
 
-  validates :avatar_url, content_type: [:png, :jpg, :jpeg]
+  validates :avatar_url_pic, content_type: [:png, :jpg, :jpeg]
 
   # has_many :trips, foreign_key: :rider_id
   # has_many :riders, through: :trips
@@ -78,7 +82,7 @@ class User < ApplicationRecord
   after_create :assign_default_role
 
   def assign_default_role
-    self.add_role(:rider) if self.roles.blank?
+    self.add_role(:Rider) if self.roles.blank?
   end
 
   accepts_nested_attributes_for :roles, allow_destroy: true

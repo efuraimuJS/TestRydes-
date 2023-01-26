@@ -78,7 +78,7 @@
 
 <!-- JQUERY:: MAP -->
 <%= javascript_include_tag "/assets/js/map.js" %>
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAl-EDTJ5_uU3zBIX7-wNTu-qSZr1DO5Dw" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAWhEVZ-vugxniA0VR6qv6isfC2fQ-xzSU&callback=initMap", :defer => "defer", :async => "async" %>
 
 <!-- JQUERY:: CUSTOM.JS -->
 <%= javascript_include_tag "/assets/js/custom.js" %>

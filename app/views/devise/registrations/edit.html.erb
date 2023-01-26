@@ -170,14 +170,16 @@
 
               <div class=" profile-header-container">
                 <div class="form-group profile-header-img">
-                  <% if current_user && current_user.avatar_url%>
+                  <% if current_user%>
                     <% if current_user.provider == "google_oauth2" %>
                       <%= image_tag current_user.avatar_url, skip_pipeline: true, size: '116x116', class: 'img-circle' %>
+                    <% elseif current_user.avatar_url_pic.attached?%>
+                      <%= image_tag current_user.avatar_url_pic&.variant(resize_to_limit: [116, 116]), class: 'img-circle' %>
                     <% else %>
-                      <%= image_tag current_user.avatar_url&.variant(resize_to_limit: [116, 116]), class: 'img-circle' %>
+                      <%= image_tag '/assets/images/icon-search.png', size: '116x116', alt: "Dammy", class: 'img-circle' %>
                     <% end %>
                   <% else %>
-                    <%= image_tag '/assets/images/icon-search.png', size: '116x116', alt: "Dammy" %>
+                    <%= image_tag '/assets/images/icon-search.png', size: '116x116', alt: "Dammy", class: 'img-circle' %>
                   <% end %>
 
                   <!-- badge -->
@@ -186,7 +188,7 @@
 
                 <div class="form-group mb-3">
                   <%= f.label 'Upload profile picture' %>
-                  <%= f.file_field :avatar_url, class: 'form-control form-control-sm', id: 'formFileSm'
+                  <%= f.file_field :avatar_url_pic, class: 'form-control form-control-sm', id: 'formFileSm'
                       #,:required => true
                   %>
                 </div>
@@ -204,7 +206,7 @@
               </div>
 
               <div class="form-group">
-                <%= f.submit "Update Profile", class: 'btn btn-primary' %>
+                <%= f.submit "Update Profile",data: {turbo: false}, class: 'btn btn-primary' %>
               </div>
             <% end %>
           </div>

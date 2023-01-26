@@ -1,2 +1,0 @@
-class DoChangesToVehiclesTable < ApplicationRecord
-end

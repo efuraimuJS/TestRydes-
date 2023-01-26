@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_23_214517) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_26_183805) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_23_214517) do
     t.datetime "updated_at", null: false
     t.bigint "instructor_id"
     t.bigint "rider_id"
+    t.string "aasm_state"
     t.index ["instructor_id"], name: "index_trips_on_instructor_id"
     t.index ["rider_id"], name: "index_trips_on_rider_id"
   end
@@ -104,7 +105,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_23_214517) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "username"
-    t.string "type"
+    t.string "type", default: "Rider"
+    t.text "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "avatar_url_pic"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -142,6 +147,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_23_214517) do
     t.integer "vehicle_type"
     t.integer "transmission_type"
     t.integer "control_type"
+    t.string "vehicle_number_plate"
     t.index ["instructor_id"], name: "index_vehicles_on_instructor_id"
     t.index ["vehicle_brands_id"], name: "index_vehicles_on_vehicle_brands_id"
     t.index ["vehicle_models_id"], name: "index_vehicles_on_vehicle_models_id"

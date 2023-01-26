@@ -2,15 +2,16 @@
 #
 # Table name: vehicles
 #
-#  id                :bigint           not null, primary key
-#  control_type      :integer
-#  transmission_type :integer
-#  vehicle_type      :integer
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  instructor_id     :bigint
-#  vehicle_brands_id :bigint
-#  vehicle_models_id :bigint
+#  id                   :bigint           not null, primary key
+#  control_type         :integer
+#  transmission_type    :integer
+#  vehicle_number_plate :string
+#  vehicle_type         :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  instructor_id        :bigint
+#  vehicle_brands_id    :bigint
+#  vehicle_models_id    :bigint
 #
 # Indexes
 #

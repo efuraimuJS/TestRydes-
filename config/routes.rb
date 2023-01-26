@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    get '/users', to: 'devise/registrations#new'
+    # get '/users', to: 'devise/registrations#new'
     resources :users do
       get :instructor_booking, to: 'trips#new', constraints: InstructorBookingConstraint.new
     end
