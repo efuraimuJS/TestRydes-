@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/ctran/annotate_models.git
-  revision: ae0b79c0f816b2433a3f00b9a73b3aea1bd3e84b
-  specs:
-    annotate (3.2.0)
-      activerecord (>= 3.2, < 8.0)
-      rake (>= 10.4, < 14.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -95,6 +87,9 @@ GEM
     after_commit_everywhere (1.3.0)
       activerecord (>= 4.2)
       activesupport
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     arbre (1.5.0)
       activesupport (>= 3.0.0, < 7.1)
       ruby2_keywords (>= 0.0.2, < 1.0)
@@ -392,7 +387,7 @@ DEPENDENCIES
   active_storage_validations (~> 0.1)
   activeadmin
   after_commit_everywhere (~> 1.0)
-  annotate!
+  annotate
   bootsnap
   capybara
   chusaku
@@ -418,7 +413,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   pundit (~> 1.1)
-  rails (~> 7.0.4)
+  rails (~> 7.0, >= 7.0.4)
   redis (~> 4.0)
   rolify (~> 6.0)
   sass-rails

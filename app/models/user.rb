@@ -35,7 +35,7 @@
 
 class User < ApplicationRecord
   include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  include Elasticsearch::Model::Callbacks unless :skip_elasticsearch_callbacks
   index_name [Rails.env, Rails.application.class.module_parent_name.underscore, self.name.downcase].join('_')
 
   self.inheritance_column = :type
@@ -44,12 +44,9 @@ class User < ApplicationRecord
   include Gravtastic
   gravtastic
 
-  has_one_attached :avatar_url_pic
+  # has_one_attached :avatar_url_pic
 
   validates :avatar_url_pic, content_type: [:png, :jpg, :jpeg]
-
-  # has_many :trips, foreign_key: :rider_id
-  # has_many :riders, through: :trips
 
   has_many :rider_users, foreign_key: :rider_id, class_name: 'Trip'
   has_many :instructors, through: :rider_users
@@ -75,7 +72,7 @@ class User < ApplicationRecord
       user.avatar_url = defined? auth.info.image  # ? auth.info.image : current_user.gravatar_url # assuming the user model has an image
       # If you are using confirmable and the provider(s) you use validate emails,
       # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+      user.skip_confirmation!
     end
   end
 
@@ -87,4 +84,27 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :roles, allow_destroy: true
 
+  settings do
+    mapping dynamic: :false do
+      indexes :id, type: :long
+      indexes :email, type: :text
+      indexes :username, type: :text
+      indexes :full_name, type: :text
+      indexes :type, type: :text
+      indexes :latitude, type: :float
+      indexes :longitude, type: :float
+      indexes :provider, type: :text
+      indexes :created_at, type: :date
+    end
+  end
+
+  def as_indexed_json(options = {})
+    self.as_json(
+        only: [:id, :email, :username, :full_name, :latitude,
+    :longitude, :provider, :created_at , :type
+        ]
+    )
+  end
 end
+
+

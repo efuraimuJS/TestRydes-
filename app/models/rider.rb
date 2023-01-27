@@ -39,4 +39,25 @@ class Rider < User
 
   has_many :trips, foreign_key: :rider_id
 
+  settings do
+    mapping dynamic: :false do
+      indexes :id, type: :long
+      indexes :email, type: :text
+      indexes :username, type: :text
+      indexes :full_name, type: :text
+      indexes :type, type: :text
+      indexes :latitude, type: :float
+      indexes :longitude, type: :float
+      indexes :provider, type: :text
+      indexes :created_at, type: :date
+    end
+  end
+
+  def as_indexed_json(options = {})
+    self.as_json(
+        only: [:id, :email, :username, :full_name, :latitude,
+               :longitude, :provider, :created_at , :type
+        ]
+    )
+  end
 end

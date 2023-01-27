@@ -51,16 +51,24 @@ class Instructor < User
   settings do
     mapping dynamic: :false do
       indexes :id, type: :long
-      indexes :avatar_url, type: :text
       indexes :email, type: :text
+      indexes :provider, type: :date
       indexes :full_name, type: :text
       indexes :username, type: :text
+      indexes :type, type: :text
+      indexes :latitude, type: :float
+      indexes :longitude, type: :float
       indexes :created_at, type: :date
       indexes :vehicle, type: :object do
         indexes :id, type: :long
-        indexes :instructor_id, type: :long
-        indexes :brand, type: :text
         indexes :created_at, type: :date
+        indexes :instructor_id, type: :long
+        indexes :vehicle_models_id, type: :long
+        indexes :vehicle_brands_id, type: :long
+        indexes :vehicle_type, type: :text
+        indexes :transmission_type, type: :text
+        indexes :control_type, type: :text
+        indexes :vehicle_number_plate, type: :text
       end
     end
   end
@@ -68,8 +76,11 @@ class Instructor < User
 
   def as_indexed_json(options = {})
     self.as_json(
-        only: [:id, :avatar_url, :email, :full_name, :username, :created_at],
-        include: {vehicle: {only: [:id, :instructor_id, :brand, :created_at]}}
+        only: [:id, :email, :username, :full_name, :type, :latitude,
+               :longitude, :provider, :created_at],
+        include: {vehicle: {only: [:id, :instructor_id, :vehicle_models_id, :vehicle_brands_id,
+                                   :vehicle_type, :transmission_type, :control_type,
+                                   :vehicle_number_plate, :created_at]}}
     )
   end
 
@@ -96,8 +107,8 @@ class Instructor < User
         },
         script: {
             lang: :painless,
-            source: 'ctx._source.vehicle.brand = params.vehicle.brand',
-            params: {vehicle: {brand: vehicle.brand}}
+            source: 'ctx._source.vehicle.vehicle_brands_id = params.vehicle.vehicle_brands_id',
+            params: {vehicle: {vehicle_brands_id: vehicle.vehicle_brands_id}}
         }
     }
     __elasticsearch__.client.update_by_query(options)

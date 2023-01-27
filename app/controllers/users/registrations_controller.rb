@@ -6,10 +6,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # @route POST /users (user_registration)
-  def create
-    params[:user] = params[:user]&.merge(type: 'Rider')
-    super
-  end
+  # def create
+  #   params[:user] = params[:user]&.merge(type: 'Rider')
+  #   super
+  # end
 
 
 
