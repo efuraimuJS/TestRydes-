@@ -44,7 +44,7 @@ class User < ApplicationRecord
   include Gravtastic
   gravtastic
 
-  # has_one_attached :avatar_url_pic
+  has_one_attached :avatar_url_pic
 
   validates :avatar_url_pic, content_type: [:png, :jpg, :jpeg]
 
