@@ -2,10 +2,10 @@
 #
 # Table name: vehicle_models
 #
-#  id         :bigint           not null, primary key
-#  model_name :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                 :bigint           not null, primary key
+#  vehicle_model_name :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 class VehicleModel < ApplicationRecord
   has_many_attached :model_images do |attachable|
@@ -17,5 +17,5 @@ class VehicleModel < ApplicationRecord
   end
 
 
-  belongs_to :vehicle_brands
+  belongs_to :vehicle_brand
 end

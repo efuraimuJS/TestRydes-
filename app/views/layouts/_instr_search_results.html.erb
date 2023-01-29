@@ -12,8 +12,8 @@
         <div class="r-best-offer-content">
 <!--          <a href="#"><b>Volk</b> GTR</a>-->
           <%= link_to '#' do %>
-            <%= tag.b "#{result.vehicle.brand}".capitalize %>
-            <%= "GTR" %>
+            <%= tag.b vehicle_brand_name("#{result.vehicle.vehicle_brands_id}".to_i) %>
+            <%= vehicle_model_name("#{result.vehicle.vehicle_models_id}".to_i) %>
           <% end %>
           <p>Start at <b>45.00 USD</b> per day</p>
           <ul class="pl-0 mb-0">

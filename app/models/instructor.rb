@@ -48,6 +48,14 @@ class Instructor < User
     search("#{search_params}").response.hits.hits.map{|r| r._source}
   }
 
+  def vehicle_brand_name(vehicle_brand_id)
+    VehicleBrand.find_by_id(vehicle_brand_id).vehicle_brand_name.to_s
+  end
+
+  def vehicle_model_name(vehicle_model_id)
+    VehicleModel.find_by_id(vehicle_model_id).vehicle_model_name.to_s
+  end
+
   settings do
     mapping dynamic: :false do
       indexes :id, type: :long
@@ -107,7 +115,7 @@ class Instructor < User
         },
         script: {
             lang: :painless,
-            source: 'ctx._source.vehicle.vehicle_brands_id = params.vehicle.vehicle_brands_id',
+            source: "ctx._source.vehicle.vehicle_brands_id = params.vehicle.vehicle_brands_id",
             params: {vehicle: {vehicle_brands_id: vehicle.vehicle_brands_id}}
         }
     }

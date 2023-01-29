@@ -2,11 +2,11 @@
 #
 # Table name: vehicle_brands
 #
-#  id                :bigint           not null, primary key
-#  brand_name        :string
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  vehicle_models_id :bigint
+#  id                 :bigint           not null, primary key
+#  vehicle_brand_name :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  vehicle_models_id  :bigint
 #
 # Indexes
 #

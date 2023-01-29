@@ -43,6 +43,8 @@ class Vehicle < ApplicationRecord
 
   after_commit :update_instructor
 
+
+
   private
   def update_instructor
     Instructor.update_vehicle(self)
