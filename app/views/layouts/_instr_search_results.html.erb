@@ -4,14 +4,14 @@
       <div class="r-best-offer-in">
         <div class="r-offer-img">
 <!--          <a class="d-inline-block" href="#"><img src="assets/images/car-1.png" class="img-fluid d-block m-auto" alt=""></a>-->
-          <%= link_to '#', class: "d-inline-block" do %>
+          <%= link_to user_instructor_booking_path("#{result.id}".to_i), class: "d-inline-block" do %>
             <%= image_tag '/assets/images/car-1.png', class: "img-fluid d-block m-auto", alt: "" %>
           <% end %>
 
         </div>
         <div class="r-best-offer-content">
 <!--          <a href="#"><b>Volk</b> GTR</a>-->
-          <%= link_to '#' do %>
+          <%= link_to  user_instructor_booking_path("#{result.id}".to_i) do %>
             <%= tag.b vehicle_brand_name("#{result.vehicle.vehicle_brands_id}".to_i) %>
             <%= vehicle_model_name("#{result.vehicle.vehicle_models_id}".to_i) %>
           <% end %>
